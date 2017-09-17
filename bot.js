@@ -24,26 +24,36 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.substring(0, 5) == '/roll') {
         let cmd = new Command(message);
         let roteMessage = !cmd.roteEnabled ? "" :
-`Rote ${cmd.roteSuccesses}
-Rote Agains ${cmd.roteAgains}`;
-        let echoMessage = `\`${user}\` - \`${message}\``
+`${cmd.roteSuccesses} Rote
+${cmd.roteAgains} Rote Agains `;
+        let echoMessage = `\`${message}\``
         let responseMessage =
-`${echoMessage}
-Rolled ${cmd.dicePool} dice for ${cmd.totalSuccesses} successes
-${roteMessage}
-Agains ${cmd.agains}
+`<@${userID}> - ${echoMessage}
 
-Raw dice ${cmd.allDice.join(', ')}`;
+${cmd.totalSuccesses} successes from ${cmd.dicePool} initial dice
+
+\`\`\`javascript
+Success breakdown
+-----------------
+${cmd.successes} Initial Roll
+${cmd.agains} Agains
+${roteMessage}
+
+${cmd.allDice.length} total dice
+${cmd.allDice.join(', ')}
+\`\`\``;
 
         let helpMessage =
-`I didn't understand ${echoMessage}
+`Sorry, <@${userID}> - I didn't understand \`${message}\`
 Roll commands must follow a certain format.
-\`/roll 15\`
-\`/roll 15 --rote\`
-\`/roll 15 --8-again\`
-\`/roll 15 --no-10-again\`
-\`/roll 15 --rote --8-again\`
-\`/roll 15 --8-again --rote\`
+\`\`\`
+/roll 15
+/roll 15 --rote
+/roll 15 --8-again
+/roll 15 --no-10-again
+/roll 15 --rote --8-again
+/roll 15 --8-again --rote
+\`\`\`
 `;
         bot.sendMessage({
           to: channelID,
