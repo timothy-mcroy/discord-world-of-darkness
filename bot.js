@@ -26,16 +26,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         let roteMessage = !cmd.roteEnabled ? "" :
 `Rote ${cmd.roteSuccesses}
 Rote Agains ${cmd.roteAgains}`;
-        let newMessage =
+        var responseMessage =
 `Rolled ${cmd.dicePool} dice for ${cmd.totalSuccesses} successes
 ${roteMessage}
 Agains ${cmd.agains}
 
 Raw dice ${cmd.allDice.join(', ')}`;
 
+        let helpMessage =
+`Roll commands must follow a certain format.
+\`/roll 15\`
+\`/roll 15 --rote\`
+\`/roll 15 --8-again\`
+\`/roll 15 --no-10-again\`
+\`/roll 15 --rote --8-again\`
+\`/roll 15 --8-again --rote\`
+`;
         bot.sendMessage({
           to: channelID,
-          message: newMessage
+          message: cmd.allDice.length == 0 ? helpMessage : responseMessage
         });
 
      }
@@ -46,7 +55,7 @@ class Command {
     this.commandText = commandText;
     this.allDice = []
     let rollExpression = /\/roll\s+(\d+)/
-    let matches = rollExpression.exec(commandText)
+    let matches = rollExpression.exec(commandText);
     if (matches === null || +matches[1] > 1000) return;
     this.dicePool = +matches[1];
     this.resultPool = this.roll(this.dicePool);
