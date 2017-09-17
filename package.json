@@ -1,0 +1,19 @@
+{
+  "name": "example-bot",
+  "version": "1.0.0",
+  "description": "Example bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "discord",
+    "example"
+  ],
+  "author": "Tim McRoy",
+  "license": "MIT",
+  "dependencies": {
+    "discord.io": "^2.5.2",
+    "winston": "^2.3.1"
+  }
+}
