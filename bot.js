@@ -30,7 +30,7 @@ ${cmd.roteAgains} Rote Agains `;
     const responseMessage =
 `<@${userID}> - ${echoMessage}
 
-${cmd.totalSuccesses} successes from ${cmd.dicePool} initial dice
+**${cmd.totalSuccesses}** successes from ${cmd.dicePool} initial dice
 
 \`\`\`javascript
 Success breakdown
