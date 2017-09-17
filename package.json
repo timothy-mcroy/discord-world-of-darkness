@@ -1,7 +1,7 @@
 {
-  "name": "example-bot",
+  "name": "World-of-darkness-bot",
   "version": "1.0.0",
-  "description": "Example bot",
+  "description": "World of darkness dice rolling bot for discord",
   "main": "bot.js",
   "scripts": {
     "test": "test"
