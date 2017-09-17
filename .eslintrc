@@ -1,0 +1,12 @@
+{
+  "plugins": ["jasmine"],
+  "extends": "airbnb",
+  "env": {
+    "node": true,
+    "jasmine": true,
+  },
+  "rules": {
+      "jsx-a11y/href-no-hash": "off",
+
+    }
+}

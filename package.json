@@ -4,7 +4,8 @@
   "description": "World of darkness dice rolling bot for discord",
   "main": "bot.js",
   "scripts": {
-    "test": "test"
+    "lint": "node ./node_modules/eslint/bin/eslint.js .",
+    "test": "node ./node_modules/jasmine/bin/jasmine.js spec"
   },
   "keywords": [
     "discord",
@@ -15,5 +16,14 @@
   "dependencies": {
     "discord.io": "^2.5.2",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jasmine": "^2.8.4",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.3.0",
+    "jasmine": "^2.8.0"
   }
 }
