@@ -26,15 +26,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         let roteMessage = !cmd.roteEnabled ? "" :
 `Rote ${cmd.roteSuccesses}
 Rote Agains ${cmd.roteAgains}`;
-        var responseMessage =
-`Rolled ${cmd.dicePool} dice for ${cmd.totalSuccesses} successes
+        let echoMessage = `\`${user}\` - \`${message}\``
+        let responseMessage =
+`${echoMessage}
+Rolled ${cmd.dicePool} dice for ${cmd.totalSuccesses} successes
 ${roteMessage}
 Agains ${cmd.agains}
 
 Raw dice ${cmd.allDice.join(', ')}`;
 
         let helpMessage =
-`Roll commands must follow a certain format.
+`I didn't understand ${echoMessage}
+Roll commands must follow a certain format.
 \`/roll 15\`
 \`/roll 15 --rote\`
 \`/roll 15 --8-again\`
