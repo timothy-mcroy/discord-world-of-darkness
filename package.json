@@ -4,7 +4,7 @@
   "description": "World of darkness dice rolling bot for discord",
   "main": "bot.js",
   "scripts": {
-    "start": "nodejs ./node_modules/forever/bin/forever restart bot.js || nodejs ./node_modules/forever/bin/forever start bot.js",
+    "startProduction": "nodejs ./node_modules/forever/bin/forever restart bot.js || nodejs ./node_modules/forever/bin/forever start bot.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js .",
     "test": "node ./node_modules/jasmine/bin/jasmine.js spec"
   },
