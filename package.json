@@ -15,7 +15,7 @@
   "author": "Tim McRoy",
   "license": "MIT",
   "dependencies": {
-    "discord.io": "^2.5.2",
+    "discord.io": "github:woor/discord.io#gateway_v6",
     "forever": "^0.15.3",
     "winston": "^2.3.1"
   },
@@ -24,7 +24,7 @@
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jasmine": "^2.8.4",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.3.0",
     "jasmine": "^2.8.0"
   }

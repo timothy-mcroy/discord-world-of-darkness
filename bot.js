@@ -18,6 +18,9 @@ bot.on('ready', () => {
   logger.info('Logged in as: ');
   logger.info(`${bot.username} - (${bot.id})`);
 });
+bot.on('disconnect', (err, code) => {
+  console.log(err, code);
+})
 bot.on('message', (user, userID, channelID, message) => {
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
