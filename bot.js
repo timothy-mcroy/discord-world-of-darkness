@@ -2,6 +2,7 @@ const Discord = require('discord.io');
 const logger = require('winston');
 const auth = require('./auth.json');
 const Command = require('./command.js');
+const CommandErrorDetection = require('./commandErrorDetection.js')
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
@@ -22,6 +23,7 @@ bot.on('disconnect', (err, code) => {
   console.log(err, code);
 })
 bot.on('message', (user, userID, channelID, message) => {
+  var responseMessage = '';
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
   if (message.substring(0, 5) === '/roll') {
@@ -30,7 +32,7 @@ bot.on('message', (user, userID, channelID, message) => {
       `${cmd.roteSuccesses} Rote
 ${cmd.roteAgains} Rote Agains `;
     const echoMessage = `\`${message}\``;
-    const responseMessage =
+    responseMessage =
 `<@${userID}> - ${echoMessage}
 
 **${cmd.totalSuccesses}** successes from ${cmd.dicePool} initial dice
@@ -58,6 +60,12 @@ Roll commands must follow a certain format.
 /roll 15 --8-again --rote
 \`\`\`
 `;
+    const probableMistakes = CommandErrorDetection.FindIssues(message);
+    if (probableMistakes.length !== 0) {
+      responseMessage += `
+\`\`\`WARNING! The following commands needed 2 dashes in a prefix: [${probableMistakes.join(', ')}]\`\`\`
+`;
+    }
     bot.sendMessage({
       to: channelID,
       message: cmd.allDice.length === 0 ? helpMessage : responseMessage,
